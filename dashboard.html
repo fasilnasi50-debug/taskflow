@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="dashboard-page dark-dashboard">
+
+  <header class="tf-header">
+    <a href="./dashboard.html" class="tf-brand">
+      <span class="tf-brand-icon">✓</span>
+      <span>TaskFlow</span>
+    </a>
+
+    <div class="tf-header-right">
+      <div class="tf-user">
+        <span class="tf-avatar">U</span>
+        <div class="tf-user-info">
+          <small>YOUR WORKSPACE</small>
+          <strong id="userName">Loading...</strong>
+        </div>
+      </div>
+
+      <button id="logoutBtn" class="tf-logout-btn" type="button">
+        Sign out <span aria-hidden="true">↗</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="tf-main">
+
+    <!-- Welcome section -->
+    <section class="tf-welcome">
+      <div>
+        <div class="tf-eyebrow">
+          <span class="tf-live-dot"></span>
+          YOUR PERSONAL WORKSPACE
+        </div>
+
+        <h1>Good to see you<span>.</span></h1>
+
+        <p>Plan your work, track your progress, and get things done.</p>
+      </div>
+
+      <div class="tf-date-card">
+        <span class="tf-date-icon">✦</span>
+        <div>
+          <strong>Stay focused</strong>
+          <small>One task at a time.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="tf-stats-grid">
+
+      <article class="tf-stat-card">
+        <div class="tf-stat-top">
+          <span class="tf-stat-label">Total tasks</span>
+          <span class="tf-stat-icon purple-icon">▤</span>
+        </div>
+        <strong class="tf-stat-number" id="totalCount">0</strong>
+        <small class="tf-stat-description">All your tasks</small>
+        <div class="tf-stat-line purple-line"></div>
+      </article>
+
+      <article class="tf-stat-card">
+        <div class="tf-stat-top">
+          <span class="tf-stat-label">Pending</span>
+          <span class="tf-stat-icon orange-icon">◷</span>
+        </div>
+        <strong class="tf-stat-number" id="pendingCount">0</strong>
+        <small class="tf-stat-description">Waiting to start</small>
+        <div class="tf-stat-line orange-line"></div>
+      </article>
+
+      <article class="tf-stat-card">
+        <div class="tf-stat-top">
+          <span class="tf-stat-label">In progress</span>
+          <span class="tf-stat-icon blue-icon">↗</span>
+        </div>
+        <strong class="tf-stat-number" id="progressCount">0</strong>
+        <small class="tf-stat-description">Work in motion</small>
+        <div class="tf-stat-line blue-line"></div>
+      </article>
+
+      <article class="tf-stat-card">
+        <div class="tf-stat-top">
+          <span class="tf-stat-label">Completed</span>
+          <span class="tf-stat-icon green-icon">✓</span>
+        </div>
+        <strong class="tf-stat-number" id="completedCount">0</strong>
+        <small class="tf-stat-description">Tasks finished</small>
+        <div class="tf-stat-line green-line"></div>
+      </article>
+
+    </section>
+
+    <!-- Task workspace -->
+    <section class="tf-workspace">
+
+      <!-- Create task -->
+      <aside class="tf-panel tf-create-panel">
+        <div class="tf-panel-heading">
+          <div class="tf-heading-icon">＋</div>
+          <div>
+            <div class="tf-panel-eyebrow">STAY ORGANIZED</div>
+            <h2>Create a task</h2>
+          </div>
+        </div>
+
+        <p class="tf-panel-description">
+          Add a task and keep your day moving forward.
+        </p>
+
+        <form id="taskForm">
+
+          <div class="tf-field">
+            <label for="taskTitle">Task title</label>
+            <input
+              type="text"
+              id="taskTitle"
+              name="taskTitle"
+              placeholder="What do you need to do?"
+              maxlength="150"
+              required
+            >
+          </div>
+
+          <div class="tf-field">
+            <label for="taskDescription">Description <span>(optional)</span></label>
+            <textarea
+              id="taskDescription"
+              name="taskDescription"
+              placeholder="Add a few details..."
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="tf-field">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" name="taskPriority">
+              <option value="low">Low priority</option>
+              <option value="medium" selected>Medium priority</option>
+              <option value="high">High priority</option>
+            </select>
+          </div>
+
+          <div class="tf-field">
+            <label for="taskDueDate">Due date <span>(optional)</span></label>
+            <input
+              type="date"
+              id="taskDueDate"
+              name="taskDueDate"
+            >
+          </div>
+
+          <button type="submit" id="addTaskBtn" class="tf-primary-btn">
+            <span>＋</span> Add task
+          </button>
+
+          <p id="taskMessage" class="tf-message" aria-live="polite"></p>
+        </form>
+      </aside>
+
+      <!-- Task list -->
+      <section class="tf-panel tf-list-panel">
+
+        <div class="tf-list-heading">
+          <div>
+            <div class="tf-panel-eyebrow">YOUR PRODUCTIVITY</div>
+            <h2>My tasks</h2>
+            <p class="tf-panel-description">
+              Everything you need to get done, in one place.
+            </p>
+          </div>
+
+          <div class="tf-task-count">
+            <span id="taskCountLabel">Your tasks</span>
+          </div>
+        </div>
+
+        <!-- Search and filter -->
+        <div class="tf-toolbar">
+
+          <div class="tf-search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search your tasks..."
+              aria-label="Search tasks"
+            >
+          </div>
+
+          <select id="statusFilter" aria-label="Filter tasks by status">
+            <option value="all">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In progress</option>
+            <option value="completed">Completed</option>
+          </select>
+
+        </div>
+
+        <div class="tf-list-label">
+          <span>YOUR TASK LIST</span>
+          <span class="tf-live-indicator">
+            <span></span> Live updates
+          </span>
+        </div>
+
+        <!-- dashboard.js renders task items here -->
+        <div id="taskList" class="tf-task-list">
+          <div class="tf-empty-state">
+            <span class="tf-empty-icon">▤</span>
+            <strong>Your tasks will appear here</strong>
+            <p>Create your first task to get started.</p>
+          </div>
+        </div>
+
+        <div class="tf-pagination">
+          <p id="paginationMessage" aria-live="polite"></p>
+          <button id="loadMoreBtn" class="tf-secondary-btn" type="button">
+            Load more tasks ↓
+          </button>
+        </div>
+
+      </section>
+
+    </section>
+
+    <footer class="tf-footer">
+      <span>© 2026 TaskFlow</span>
+      <span>Make progress every day <span class="tf-footer-star">✦</span></span>
+    </footer>
+
+  </main>
+
+  <script type="module" src="./dashboard.js"></script>
+</body>
+</html>

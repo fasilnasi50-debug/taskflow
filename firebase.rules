@@ -1,0 +1,90 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Check whether a user is authenticated.
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Check ownership of a document.
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // User profile documents: users/{uid}
+    match /users/{userId} {
+
+      allow create: if isOwner(userId)
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly([
+          'uid', 'fullName', 'email', 'createdAt'
+        ])
+        && request.resource.data.fullName is string
+        && request.resource.data.email == request.auth.token.email;
+
+      allow read: if isOwner(userId);
+
+      allow update: if isOwner(userId)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.diff(resource.data)
+          .affectedKeys().hasOnly(['fullName']);
+
+      allow delete: if false;
+    }
+
+    // Task documents: tasks/{taskId}
+    match /tasks/{taskId} {
+
+      allow create: if isSignedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.keys().hasOnly([
+          'ownerId',
+          'title',
+          'description',
+          'status',
+          'priority',
+          'dueDate',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 150
+        && request.resource.data.status in [
+          'pending', 'in-progress', 'completed'
+        ]
+        && request.resource.data.priority in [
+          'low', 'medium', 'high'
+        ];
+
+      allow read, delete: if isSignedIn()
+        && resource.data.ownerId == request.auth.uid;
+
+      allow update: if isSignedIn()
+        && resource.data.ownerId == request.auth.uid
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.diff(resource.data)
+          .affectedKeys().hasOnly([
+            'title',
+            'description',
+            'status',
+            'priority',
+            'dueDate',
+            'updatedAt'
+          ])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 150
+        && request.resource.data.status in [
+          'pending', 'in-progress', 'completed'
+        ]
+        && request.resource.data.priority in [
+          'low', 'medium', 'high'
+        ];
+    }
+  }
+}

@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TaskFlow | Smart Task Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="auth-page dark-auth">
+
+  <main class="auth-layout">
+
+    <!-- LEFT SIDE -->
+    <section class="auth-hero">
+
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">✓</span>
+        <span>TaskFlow</span>
+      </a>
+
+      <div class="hero-content">
+
+        <div class="hero-eyebrow">
+          <span class="status-dot"></span>
+          SMART TASK MANAGEMENT
+        </div>
+
+        <h1>
+          Make time for
+          <span>what matters.</span>
+        </h1>
+
+        <p>
+          Organize your tasks, manage your priorities, and make
+          progress every day with your personal workspace.
+        </p>
+
+        <!-- Decorative preview -->
+        <div class="hero-preview">
+
+          <div class="preview-top">
+            <div>
+              <span class="preview-heading">Your workspace</span>
+              <span class="preview-caption">A little progress every day</span>
+            </div>
+
+            <div class="preview-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="preview-stats">
+
+            <div class="preview-stat">
+              <strong>12</strong>
+              <small>Total tasks</small>
+            </div>
+
+            <div class="preview-stat">
+              <strong>04</strong>
+              <small>In progress</small>
+            </div>
+
+            <div class="preview-stat">
+              <strong>08</strong>
+              <small>Completed</small>
+            </div>
+
+          </div>
+
+          <div class="preview-section-title">
+            <span>Today's focus</span>
+            <span class="preview-counter">2 tasks</span>
+          </div>
+
+          <div class="preview-task completed">
+            <span class="preview-check">✓</span>
+            <span>Plan your priorities</span>
+          </div>
+
+          <div class="preview-task">
+            <span class="preview-check"></span>
+            <span>Finish your main project</span>
+          </div>
+
+        </div>
+
+        <div class="hero-features">
+          <div>
+            <span class="feature-check">✓</span>
+            Organize your daily tasks
+          </div>
+
+          <div>
+            <span class="feature-check">✓</span>
+            Track your progress
+          </div>
+
+          <div>
+            <span class="feature-check">✓</span>
+            Keep your workspace secure
+          </div>
+        </div>
+
+      </div>
+
+      <footer class="hero-footer">
+        © 2026 TaskFlow. Built for better days.
+      </footer>
+
+    </section>
+
+    <!-- RIGHT SIDE: AUTHENTICATION -->
+    <section class="auth-panel">
+
+      <div class="auth-card">
+
+        <div class="auth-heading">
+
+          <div class="auth-small-label">
+            YOUR WORKSPACE AWAITS
+          </div>
+
+          <h2 id="formTitle">Welcome back.</h2>
+
+          <p id="formSubtitle">
+            Sign in to continue to your workspace.
+          </p>
+
+        </div>
+
+        <!-- IDs in this form must match app.js -->
+        <form id="authForm" class="auth-form">
+
+          <!-- FULL NAME: shown during registration -->
+          <div class="form-group hidden" id="nameGroup">
+
+            <label for="fullName">Full name</label>
+
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your full name"
+              autocomplete="name"
+            >
+
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-group">
+
+            <label for="email">Email address</label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              autocomplete="username"
+              required
+            >
+
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-group">
+
+            <div class="password-label-row">
+
+              <label for="password">Password</label>
+
+              <span class="secure-label">
+                <span aria-hidden="true">🔒</span>
+                Secure sign-in
+              </span>
+
+            </div>
+
+            <div class="password-wrapper">
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                minlength="6"
+                required
+              >
+
+              <button
+                type="button"
+                id="togglePassword"
+                class="password-toggle"
+                aria-label="Show password"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- FIREBASE ERROR / SUCCESS MESSAGE -->
+          <div
+            id="authMessage"
+            class="message"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <!-- SUBMIT BUTTON -->
+          <button
+            type="submit"
+            id="submitBtn"
+            class="auth-submit"
+          >
+            Sign in
+            <span aria-hidden="true">→</span>
+          </button>
+
+        </form>
+
+        <!-- SWITCH LOGIN / REGISTER -->
+        <div class="auth-switch">
+
+          <span id="switchLabel">
+            Don't have an account?
+          </span>
+
+          <button
+            type="button"
+            id="switchMode"
+          >
+            Create account
+          </button>
+
+        </div>
+
+        <div class="auth-security-note">
+          <span aria-hidden="true">◈</span>
+          Your workspace, your progress.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Load Firebase authentication logic -->
+  <script type="module" src="./app.js"></script>
+
+</body>
+</html>

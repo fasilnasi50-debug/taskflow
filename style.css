@@ -1,0 +1,1003 @@
+
+/* ==========================================
+   TASKFLOW PREMIUM DARK DASHBOARD
+========================================== */
+
+body.dark-dashboard {
+  --tf-bg: #080b16;
+  --tf-panel: #101627;
+  --tf-panel-hover: #151d31;
+  --tf-border: #283148;
+  --tf-text: #f8fafc;
+  --tf-muted: #8f9bb3;
+  --tf-purple: #8b5cf6;
+  --tf-purple-light: #c4b5fd;
+
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(124, 58, 237, .12), transparent 35%),
+    radial-gradient(ellipse at 95% 40%, rgba(59, 130, 246, .06), transparent 30%),
+    var(--tf-bg);
+  color: var(--tf-text);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+
+.dark-dashboard .tf-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 82px;
+  padding: 15px clamp(20px, 5vw, 70px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  background: rgba(8, 11, 22, .9);
+  backdrop-filter: blur(18px);
+}
+
+.dark-dashboard .tf-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.dark-dashboard .tf-brand-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #a78bfa, #6d28d9);
+  color: white;
+  font-size: 23px;
+  box-shadow: 0 7px 24px rgba(124,58,237,.28);
+}
+
+.dark-dashboard .tf-header-right,
+.dark-dashboard .tf-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dark-dashboard .tf-avatar {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border: 1px solid rgba(167,139,250,.35);
+  border-radius: 50%;
+  background: rgba(139,92,246,.16);
+  color: #c4b5fd;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.dark-dashboard .tf-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dark-dashboard .tf-user-info small {
+  color: #818da5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.dark-dashboard .tf-user-info strong {
+  max-width: 190px;
+  overflow: hidden;
+  color: #f8fafc;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dark-dashboard .tf-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 39px;
+  padding: 9px 14px;
+  border: 1px solid #303951;
+  border-radius: 10px;
+  background: #111729;
+  color: #d8deeb;
+  font-size: 11px;
+  font-weight: 700;
+  transition: .2s ease;
+}
+
+.dark-dashboard .tf-logout-btn:hover {
+  border-color: #8b5cf6;
+  background: rgba(139,92,246,.12);
+  color: white;
+}
+
+/* Main container */
+
+.dark-dashboard .tf-main {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 42px clamp(20px, 5vw, 70px) 35px;
+}
+
+/* Welcome */
+
+.dark-dashboard .tf-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 31px;
+}
+
+.dark-dashboard .tf-eyebrow,
+.dark-dashboard .tf-panel-eyebrow {
+  color: #a78bfa;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.dark-dashboard .tf-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+.dark-dashboard .tf-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 9px rgba(167,139,250,.7);
+}
+
+.dark-dashboard .tf-welcome h1 {
+  margin: 0 0 8px;
+  color: #f8fafc;
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.7px;
+  line-height: 1.2;
+}
+
+.dark-dashboard .tf-welcome h1 span {
+  color: #a78bfa;
+}
+
+.dark-dashboard .tf-welcome > div > p {
+  color: var(--tf-muted);
+  font-size: 13px;
+}
+
+.dark-dashboard .tf-date-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  border: 1px solid var(--tf-border);
+  border-radius: 13px;
+  background: rgba(16,22,39,.85);
+}
+
+.dark-dashboard .tf-date-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(139,92,246,.16);
+  color: #c4b5fd;
+  font-size: 19px;
+}
+
+.dark-dashboard .tf-date-card strong,
+.dark-dashboard .tf-date-card small {
+  display: block;
+}
+
+.dark-dashboard .tf-date-card strong {
+  color: #f8fafc;
+  font-size: 11px;
+}
+
+.dark-dashboard .tf-date-card small {
+  margin-top: 4px;
+  color: var(--tf-muted);
+  font-size: 10px;
+}
+
+/* Statistics cards */
+
+.dark-dashboard .tf-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 26px;
+}
+
+.dark-dashboard .tf-stat-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 21px;
+  border: 1px solid var(--tf-border);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #121a2d, #0e1424);
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.dark-dashboard .tf-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: #48506c;
+}
+
+.dark-dashboard .tf-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dark-dashboard .tf-stat-label {
+  color: #a4afc3;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dark-dashboard .tf-stat-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.dark-dashboard .purple-icon {
+  background: rgba(139,92,246,.16);
+  color: #c4b5fd;
+}
+
+.dark-dashboard .orange-icon {
+  background: rgba(249,115,22,.13);
+  color: #fdba74;
+}
+
+.dark-dashboard .blue-icon {
+  background: rgba(59,130,246,.15);
+  color: #93c5fd;
+}
+
+.dark-dashboard .green-icon {
+  background: rgba(34,197,94,.13);
+  color: #86efac;
+}
+
+.dark-dashboard .tf-stat-number {
+  display: block;
+  margin-top: 14px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.dark-dashboard .tf-stat-description {
+  display: block;
+  margin-top: 7px;
+  color: #78859d;
+  font-size: 10px;
+}
+
+.dark-dashboard .tf-stat-line {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  opacity: .8;
+}
+
+.dark-dashboard .purple-line {
+  background: #8b5cf6;
+}
+
+.dark-dashboard .orange-line {
+  background: #f97316;
+}
+
+.dark-dashboard .blue-line {
+  background: #3b82f6;
+}
+
+.dark-dashboard .green-line {
+  background: #22c55e;
+}
+
+/* Main workspace */
+
+.dark-dashboard .tf-workspace {
+  display: grid;
+  grid-template-columns: minmax(290px, .78fr) minmax(0, 1.6fr);
+  align-items: start;
+  gap: 21px;
+}
+
+.dark-dashboard .tf-panel {
+  min-width: 0;
+  padding: 25px;
+  border: 1px solid var(--tf-border);
+  border-radius: 16px;
+  background: rgba(16,22,39,.9);
+  box-shadow: 0 15px 45px rgba(0,0,0,.1);
+}
+
+.dark-dashboard .tf-panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dark-dashboard .tf-heading-icon {
+  display: grid;
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid rgba(167,139,250,.25);
+  border-radius: 12px;
+  background: rgba(139,92,246,.14);
+  color: #c4b5fd;
+  font-size: 22px;
+}
+
+.dark-dashboard .tf-panel h2 {
+  margin: 5px 0 0;
+  color: #f8fafc;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+.dark-dashboard .tf-panel-description {
+  margin: 15px 0 22px;
+  color: #8f9bb3;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* Create-task form */
+
+.dark-dashboard #taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.dark-dashboard #taskForm .tf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.dark-dashboard #taskForm .tf-field label {
+  color: #d6ddec;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dark-dashboard #taskForm .tf-field label span {
+  color: #748099;
+  font-weight: 500;
+}
+
+.dark-dashboard #taskForm input,
+.dark-dashboard #taskForm textarea,
+.dark-dashboard #taskForm select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 11px 12px;
+  border: 1px solid #2a344b;
+  border-radius: 9px;
+  outline: none;
+  background: #090e1b;
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  box-shadow: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.dark-dashboard #taskForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.dark-dashboard #taskForm input::placeholder,
+.dark-dashboard #taskForm textarea::placeholder {
+  color: #65728a;
+}
+
+.dark-dashboard #taskForm input:focus,
+.dark-dashboard #taskForm textarea:focus,
+.dark-dashboard #taskForm select:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.12);
+}
+
+.dark-dashboard #taskForm input[type="date"] {
+  color-scheme: dark;
+}
+
+.dark-dashboard .tf-primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 47px;
+  margin-top: 2px;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #8b5cf6, #6d28d9);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 8px 23px rgba(124,58,237,.2);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.dark-dashboard .tf-primary-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124,58,237,.32);
+}
+
+.dark-dashboard .tf-primary-btn:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+.dark-dashboard .tf-message {
+  overflow-wrap: anywhere;
+  color: #8f9bb3;
+  font-size: 11px;
+}
+
+.dark-dashboard .tf-message:empty {
+  display: none;
+}
+
+/* Task list header */
+
+.dark-dashboard .tf-list-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.dark-dashboard .tf-list-heading .tf-panel-description {
+  margin: 9px 0 0;
+}
+
+.dark-dashboard .tf-task-count {
+  padding: 7px 10px;
+  border: 1px solid rgba(167,139,250,.23);
+  border-radius: 8px;
+  background: rgba(139,92,246,.1);
+  color: #c4b5fd;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Search and filters */
+
+.dark-dashboard .tf-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 145px;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.dark-dashboard .tf-search-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.dark-dashboard .tf-search-wrap > span {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #8b97ad;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.dark-dashboard .tf-search-wrap input,
+.dark-dashboard #statusFilter {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 43px;
+  padding: 10px 12px;
+  border: 1px solid #2a344b;
+  border-radius: 9px;
+  outline: none;
+  background: #090e1b;
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+}
+
+.dark-dashboard .tf-search-wrap input {
+  padding-left: 37px;
+}
+
+.dark-dashboard .tf-search-wrap input::placeholder {
+  color: #65728a;
+}
+
+.dark-dashboard .tf-search-wrap input:focus,
+.dark-dashboard #statusFilter:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.1);
+}
+
+.dark-dashboard .tf-list-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  color: #7e8ba3;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.dark-dashboard .tf-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8fa0b7;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.dark-dashboard .tf-live-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74,222,128,.5);
+}
+
+/* Task cards rendered by dashboard.js */
+
+.dark-dashboard #taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  min-width: 0;
+  margin-top: 13px;
+}
+
+.dark-dashboard #taskList > * {
+  min-width: 0;
+}
+
+.dark-dashboard #taskList > div,
+.dark-dashboard #taskList > article {
+  overflow-wrap: anywhere;
+}
+
+.dark-dashboard .tf-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 38px 15px;
+  border: 1px dashed #303951;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.dark-dashboard .tf-empty-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 12px;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(139,92,246,.12);
+  color: #c4b5fd;
+  font-size: 23px;
+}
+
+.dark-dashboard .tf-empty-state strong {
+  color: #e2e8f0;
+  font-size: 12px;
+}
+
+.dark-dashboard .tf-empty-state p {
+  margin-top: 6px;
+  color: #8190a8;
+  font-size: 11px;
+}
+
+/* Generic task styling for common class names */
+
+.dark-dashboard .task-item,
+.dark-dashboard .task-card,
+.dark-dashboard .task-row,
+.dark-dashboard .tf-task-card {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid #29334a;
+  border-radius: 12px;
+  background: #121a2c;
+  color: #e2e8f0;
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.dark-dashboard .task-item:hover,
+.dark-dashboard .task-card:hover,
+.dark-dashboard .task-row:hover,
+.dark-dashboard .tf-task-card:hover {
+  border-color: #48506c;
+  background: #151e32;
+}
+
+.dark-dashboard .task-item h3,
+.dark-dashboard .task-card h3,
+.dark-dashboard .task-row h3,
+.dark-dashboard .tf-task-card h3 {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.dark-dashboard .task-item p,
+.dark-dashboard .task-card p,
+.dark-dashboard .task-row p,
+.dark-dashboard .tf-task-card p {
+  margin-top: 7px;
+  color: #8f9bb3;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.dark-dashboard .task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  color: #8f9bb3;
+  font-size: 10px;
+}
+
+.dark-dashboard .task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.dark-dashboard .task-actions button,
+.dark-dashboard .task-item button,
+.dark-dashboard .task-card button,
+.dark-dashboard .task-row button,
+.dark-dashboard #taskList button {
+  max-width: 100%;
+  min-height: 31px;
+  padding: 6px 10px;
+  border: 1px solid #303951;
+  border-radius: 8px;
+  background: #171f33;
+  color: #d8deeb;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dark-dashboard .task-actions button:hover,
+.dark-dashboard .task-item button:hover,
+.dark-dashboard .task-card button:hover,
+.dark-dashboard .task-row button:hover,
+.dark-dashboard #taskList button:hover {
+  border-color: #8b5cf6;
+  background: rgba(139,92,246,.12);
+}
+
+.dark-dashboard .task-actions button.delete-btn,
+.dark-dashboard #taskList button.delete-btn {
+  border-color: rgba(248,113,113,.2);
+  color: #fca5a5;
+}
+
+.dark-dashboard .task-actions button.delete-btn:hover,
+.dark-dashboard #taskList button.delete-btn:hover {
+  background: rgba(239,68,68,.1);
+}
+
+/* Status and priority badges */
+
+.dark-dashboard .badge,
+.dark-dashboard .status-badge,
+.dark-dashboard .priority-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.dark-dashboard .status-pending,
+.dark-dashboard .badge-pending {
+  background: rgba(249,115,22,.13);
+  color: #fdba74;
+}
+
+.dark-dashboard .status-in-progress,
+.dark-dashboard .badge-progress {
+  background: rgba(59,130,246,.13);
+  color: #93c5fd;
+}
+
+.dark-dashboard .status-completed,
+.dark-dashboard .badge-completed {
+  background: rgba(34,197,94,.12);
+  color: #86efac;
+}
+
+.dark-dashboard .priority-low {
+  background: rgba(148,163,184,.12);
+  color: #cbd5e1;
+}
+
+.dark-dashboard .priority-medium {
+  background: rgba(234,179,8,.13);
+  color: #fde047;
+}
+
+.dark-dashboard .priority-high {
+  background: rgba(239,68,68,.13);
+  color: #fca5a5;
+}
+
+/* Pagination */
+
+.dark-dashboard .tf-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.dark-dashboard #paginationMessage {
+  color: #8f9bb3;
+  font-size: 10px;
+}
+
+.dark-dashboard .tf-secondary-btn {
+  min-height: 37px;
+  padding: 9px 13px;
+  border: 1px solid #303951;
+  border-radius: 9px;
+  background: #141c2e;
+  color: #c4b5fd;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dark-dashboard .tf-secondary-btn:hover {
+  border-color: #8b5cf6;
+  background: rgba(139,92,246,.12);
+}
+
+.dark-dashboard .tf-secondary-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* Footer */
+
+.dark-dashboard .tf-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #68758d;
+  font-size: 10px;
+}
+
+.dark-dashboard .tf-footer-star {
+  color: #a78bfa;
+}
+
+/* Responsive */
+
+@media (max-width: 1050px) {
+  .dark-dashboard .tf-main {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .dark-dashboard .tf-workspace {
+    grid-template-columns: minmax(270px, .8fr) minmax(0, 1.2fr);
+  }
+
+  .dark-dashboard .tf-panel {
+    padding: 20px;
+  }
+
+  .dark-dashboard .tf-stat-card {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 800px) {
+  .dark-dashboard .tf-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dark-dashboard .tf-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-dashboard .tf-create-panel {
+    order: 1;
+  }
+
+  .dark-dashboard .tf-list-panel {
+    order: 2;
+  }
+
+  .dark-dashboard .tf-date-card {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .dark-dashboard .tf-header {
+    min-height: 68px;
+    padding: 12px 15px;
+  }
+
+  .dark-dashboard .tf-brand {
+    gap: 8px;
+    font-size: 17px;
+  }
+
+  .dark-dashboard .tf-brand-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+  }
+
+  .dark-dashboard .tf-header-right {
+    gap: 9px;
+  }
+
+  .dark-dashboard .tf-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dark-dashboard .tf-user-info small {
+    display: none;
+  }
+
+  .dark-dashboard .tf-user-info strong {
+    max-width: 85px;
+    font-size: 10px;
+  }
+
+  .dark-dashboard .tf-logout-btn {
+    gap: 4px;
+    min-height: 34px;
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .dark-dashboard .tf-main {
+    padding: 28px 15px;
+  }
+
+  .dark-dashboard .tf-welcome {
+    margin-bottom: 23px;
+  }
+
+  .dark-dashboard .tf-welcome h1 {
+    font-size: 31px;
+  }
+
+  .dark-dashboard .tf-welcome > div > p {
+    font-size: 11px;
+  }
+
+  .dark-dashboard .tf-stats-grid {
+    gap: 10px;
+    margin-bottom: 17px;
+  }
+
+  .dark-dashboard .tf-stat-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .dark-dashboard .tf-stat-label {
+    font-size: 10px;
+  }
+
+  .dark-dashboard .tf-stat-icon {
+    width: 29px;
+    height: 29px;
+    font-size: 14px;
+  }
+
+  .dark-dashboard .tf-stat-number {
+    font-size: 27px;
+  }
+
+  .dark-dashboard .tf-stat-description {
+    font-size: 9px;
+  }
+
+  .dark-dashboard .tf-panel {
+    padding: 17px;
+    border-radius: 13px;
+  }
+
+  .dark-dashboard .tf-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-dashboard .tf-list-heading {
+    flex-direction: column;
+  }
+
+  .dark-dashboard .tf-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dark-dashboard .tf-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
